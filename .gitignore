@@ -2,5 +2,6 @@
 *.pyc
 test.pyc
 __pycache__/
+.vscode/
 test.py
-.vscode/launch.json
+test/

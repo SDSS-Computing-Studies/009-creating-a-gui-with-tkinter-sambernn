@@ -28,33 +28,60 @@ called WIDGETS, and we'll see how they can be added in the next few
 files.
 """
 
-label1 = tk.Label(window,text="Text that does\nnothing is a label")
-label1.pack()
+#creates a text label widget and stores it into the object "label1"
+#Label options can be found at http://effbot.org/tkinterbook/label.htm
+label1 = tk.Label(window,text="Text that does\nnothing is a label", bg="#ee0000")
 
+#creates a text label widget that contains an image
+# note: PhotoImage is part of the tk module, so without using
+# from tkinter import *, we would have had to do: tk.PhotoImage(file="dog.ong")
 dogphoto = PhotoImage(file="dog.png")
 label2 = tk.Label(window, image=dogphoto)
-label2.pack()
 
 lable3 = tk.Label(window, text="Note that an image can be in a label or a button!")
-lable3.pack()
 
-button1 = tk.Button(window,text="A button\nis clickable", padx=3, pady=2, relief=GROOVE)
-button1.pack()
+#creates a button: see https://www.tutorialspoint.com/python/tk_button.htm for list of options
+button1 = tk.Button(window,text="A button\nis clickable")
 
+#creates an input box for text entry.  Config options can be found at https://effbot.org/tkinterbook/entry.htm
+#Note, we will spend more time working with retrievin and working with information in a later lesson
 entry1 = tk.Entry(window,text="Entry widgets can be typed in", width=10)
-entry1.pack()
 
 combo = ttk.Combobox(window,values=["1","2","3"])
-combo.config()
-combo.pack()
 
+#checkbutton options can be found at http://effbot.org/tkinterbook/checkbutton.htm
 check1 = tk.Checkbutton(window)
+
+
+# Once the widgets have been defined, the order that they will appear in the window is 
+# set by the order that they are packed.  Try moving them around and see what happens:
+# There are options available when using tkinter.pack()
+# tkinter.pack() options can be found at https://www.tutorialspoint.com/python/tk_pack.htm
+label1.pack()
+label2.pack()
+lable3.pack()
+button1.pack()
+entry1.pack()
+combo.pack()
 check1.pack()
 
+#--------------------------------------------------------------------------
+# A Frame can be used to help organize how you want your widgets placed:
+# A Frame acts like a single widget, into which you can put other widgets
+# We can now position multiple frames in a row by adjusting the "side"
+# when we pack() it.
+nF = Frame()
 
+#note that we use nF in the widget method here
+fLabel1 = Label(nF,text="hi!", background="#ffaaff")
+fLabel2 = Label(nF,text="another widget!", background="#aaffff")
+
+nF.pack()
+fLabel1.pack(side=LEFT)
+fLabel2.pack(side=LEFT)
 """
 Note some of the difficulty in trying to arrange your widgets1
-If you want some good control over your widgets, we need to use the
+Some alternatve good control over your widgets can also be achieved using the
 geometry manager to place them into a grid or using the coordinates
 (example3.py and exampl4.py
 """
